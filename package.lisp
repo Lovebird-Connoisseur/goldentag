@@ -1,4 +1,5 @@
 ;;;; package.lisp
 
 (defpackage #:goldentag
-  (:use #:cl))
+  (:use #:cl)
+  (:export #:tag))
