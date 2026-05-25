@@ -9,4 +9,5 @@
   :depends-on (#:fiveam
                #:fset)
   :components ((:file "package")
-               (:file "goldentag")))
+               (:file "goldentag")
+               (:file "tests")))
