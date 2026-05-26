@@ -12,7 +12,7 @@
 
 (def-suite* tag :in test-suite)
 
-
+;; TODO: Test passing invalid arguments
 ;; TODO: Union/Intersection/Difference tests, to check if maps only differ by the changed (removed/added) element
 (test new-tag
   (let* ((new-field 'new-field)
