@@ -34,12 +34,12 @@
          (new-tag-list (goldentag:tag +default-tag-list+ existing-field new-value :append t)))
     (is (fset2:equal? expected-result (fset2:lookup new-tag-list existing-field)))))
 
-(test tag-append-non-existant
-  (let* ((non-existing-field 'non-existing-field)
+(test tag-append-non-existent
+  (let* ((field 'non-existing-field)
          (new-value "Some Value")
          (expected-result new-value)
-         (new-tag-list (goldentag:tag +default-tag-list+ non-existing-field new-value :append t)))
-    (is (fset2:equal? expected-result (fset2:lookup new-tag-list non-existing-field)))))
+         (new-tag-list (goldentag:tag +default-tag-list+ field new-value :append t)))
+    (is (fset2:equal? expected-result (fset2:lookup new-tag-list field)))))
 
 (test tag-overwrite
   (let* ((existing-field 'existing-field)
@@ -59,11 +59,11 @@
          (new-tag-list (goldentag:tag +default-tag-list+ existing-field new-value :append t :overwrite t)))
     (is (fset2:equal? (fset2:lookup new-tag-list existing-field) new-value))))
 
-(test tag-append-overwrite-non-existant
-  (let* ((non-existing-field 'non-existing-field)
+(test tag-append-overwrite-non-existent
+  (let* ((field 'non-existing-field)
          (new-value "Hunter")
-         (new-tag-list (goldentag:tag +default-tag-list+ non-existing-field new-value :append t :overwrite t)))
-    (is (fset2:equal? (fset2:lookup new-tag-list non-existing-field) new-value))))
+         (new-tag-list (goldentag:tag +default-tag-list+ field new-value :append t :overwrite t)))
+    (is (fset2:equal? (fset2:lookup new-tag-list field) new-value))))
 
 (test untag
   (let* ((existing-field 'author)
@@ -71,9 +71,9 @@
     (is (null (fset2:lookup new-tag-list existing-field)))))
 
 (test untag-non-existent
-  (let* ((non-existing-field 'non-existing-field)
-         (new-tag-list (goldentag:untag +default-tag-list+ non-existing-field)))
-    (is (null (fset2:lookup new-tag-list non-existing-field)))))
+  (let* ((field 'non-existing-field)
+         (new-tag-list (goldentag:untag +default-tag-list+ field)))
+    (is (null (fset2:lookup new-tag-list field)))))
 
 (test untag-partial
   (let* ((existing-field 'author)
@@ -83,7 +83,7 @@
                       (remove target (fset2:lookup +default-tag-list+ existing-field) :test #'fset2:equal?)))))
 
 (test untag-partial-non-existent
-  (let* ((non-existing-field 'non-existing-field)
+  (let* ((field 'non-existing-field)
          (target "John")
-         (new-tag-list (goldentag:untag +default-tag-list+ non-existing-field target)))
-    (is (fset2:equal? nil (fset2:lookup new-tag-list non-existing-field)))))
+         (new-tag-list (goldentag:untag +default-tag-list+ field target)))
+    (is (fset2:equal? nil (fset2:lookup new-tag-list field)))))
