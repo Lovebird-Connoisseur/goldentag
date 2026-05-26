@@ -47,11 +47,11 @@
          (new-tag-list (goldentag:tag +default-tag-list+ existing-field new-value :overwrite t)))
     (is (fset2:equal? (fset2:lookup new-tag-list existing-field) new-value))))
 
-(test tag-overwrite-non-existant
-  (let* ((non-existing-field 'existing-field)
+(test tag-overwrite-non-existent
+  (let* ((field 'non-existing-field)
          (new-value "New Value")
-         (new-tag-list (goldentag:tag +default-tag-list+ non-existing-field new-value :overwrite t)))
-    (is (fset2:equal? (fset2:lookup new-tag-list non-existing-field) new-value))))
+         (new-tag-list (goldentag:tag +default-tag-list+ field new-value :overwrite t)))
+    (is (fset2:equal? (fset2:lookup new-tag-list field) new-value))))
 
 (test tag-append-overwrite
   (let* ((existing-field 'author)
