@@ -4,9 +4,9 @@
 
 ;; TODO: Support for nested maps
 (defun tag (taglist field field-value &key append overwrite)
-  "Returns a new taglist with :FIELD FIELD-VALUE added.
+  "Returns a copy of TAGLIST with the entry (FIELD FIELD-VALUE) added.
 
-The argument TAGLIST should be a fset2:map.
+The argument TAGLIST should be a `fset2:map'.
 
 The argument FIELD should be a symbol.
 
