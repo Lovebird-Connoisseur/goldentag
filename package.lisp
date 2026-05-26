@@ -2,4 +2,4 @@
 
 (defpackage #:goldentag
   (:use #:cl)
-  (:export #:tag))
+  (:export #:tag #:untag))
