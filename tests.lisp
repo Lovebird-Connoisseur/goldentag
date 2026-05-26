@@ -1,8 +1,3 @@
-(in-package :cl-user)
-(defpackage tests
-  (:use :cl
-   :fiveam))
-
 (in-package :tests)
 
 (defconstant +default-tag-list+ (fset2:map ('title "Title")
