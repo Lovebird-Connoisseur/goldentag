@@ -20,3 +20,21 @@ It should be noted that OVERWRITE takes precedence over APPEND."
                        (new-value (alexandria:flatten (list cur-value field-value))))
                   (fset2:map (fset2:$ taglist) (field new-value))))
         (t taglist)))
+
+(defun untag (taglist field &optional target)
+  "Returns a copy of TAGLIST with the specified FIELD removed.
+Optionally, if TARGET was provided, only the TARGET value is removed from field.
+
+The argument TAGLIST should be a `fset2:map'.
+
+The argument FIELD should be a symbol.
+
+The argument TARGET should be a value.
+
+FIELD should not contain any illegal filename characters."
+  (if (null target)
+      (fset2:less taglist field)
+      (fset2:map (fset2:$ taglist) (field (remove
+                                           target
+                                           (fset2:lookup taglist field)
+                                           :test #'fset2:equal?)))))
