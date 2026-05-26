@@ -8,4 +8,5 @@
 
 (defpackage tests
   (:use #:cl
-        #:fiveam))
+        #:fiveam)
+  (:export #:test-suite))
