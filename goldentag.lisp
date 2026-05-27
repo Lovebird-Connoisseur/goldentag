@@ -53,8 +53,7 @@ The argument VALUE should be a value.
 
 The argument TEST should be an equality function.
 
-Neither FIELD nor VALUE should contain any illegal filename characters.
-"
+Neither FIELD nor VALUE should contain any illegal filename characters."
   (let ((field-value (fset2:lookup taglist field)))
     (if test
         (funcall test field-value value)
