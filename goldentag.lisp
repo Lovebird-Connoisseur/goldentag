@@ -31,7 +31,7 @@ The argument FIELD should be a symbol.
 
 The argument TARGET should be a value.
 
-FIELD should not contain any illegal filename characters."
+Neither FIELD nor TARGET should contain any illegal filename characters."
   (if (null target)
       (fset2:less taglist field)
       (fset2:map (fset2:$ taglist) (field (remove
