@@ -34,10 +34,9 @@ The argument TARGET should be a value.
 Neither FIELD nor TARGET should contain any illegal filename characters."
   (if (null target)
       (fset2:less taglist field)
-      (fset2:map (fset2:$ taglist) (field (remove
-                                           target
-                                           (fset2:lookup taglist field)
-                                           :test #'fset2:equal?)))))
+      (fset2:map (fset2:$ taglist) (field (remove target
+                                                  (fset2:lookup taglist field)
+                                                  :test #'fset2:equal?)))))
 
 ;; TODO: Should it fail, if FIELD doesn't exist?
 (defun equals-tag? (taglist field value &optional test)
