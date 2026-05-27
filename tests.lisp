@@ -87,3 +87,29 @@
          (target "John")
          (new-tag-list (goldentag:untag +default-tag-list+ field target)))
     (is (fset2:equal? nil (fset2:lookup new-tag-list field)))))
+
+(test equals-tag?-equal
+  (let* ((field 'existing-field)
+         (value "test")
+         (result (goldentag:equals-tag? +default-tag-list+ field value)))
+    (is-true result)))
+
+(test equals-tag?-not-equal
+  (let* ((field 'existing-field)
+         (value "not-test")
+         (result (goldentag:equals-tag? +default-tag-list+ field value)))
+    (is (not result))))
+
+(test equals-tag?-doesnt-exist
+  (let* ((field 'non-existing-field)
+         (value "test")
+         (result (goldentag:equals-tag? +default-tag-list+ field value)))
+    (is (not result))))
+
+(test equals-tag?-custom-test
+  (let* ((field 'existing-field)
+         (value "TEST")
+         (result-non-equal (goldentag:equals-tag? +default-tag-list+ field value))
+         (result-equal (goldentag:equals-tag? +default-tag-list+ field value #'equalp)))
+    (is (not result-non-equal))
+    (is-true result-equal)))

@@ -4,7 +4,7 @@
 
 (defpackage #:goldentag
   (:use #:cl)
-  (:export #:tag #:untag))
+  (:export #:tag #:untag #:equals-tag?))
 
 (defpackage tests
   (:use #:cl

@@ -38,3 +38,24 @@ FIELD should not contain any illegal filename characters."
                                            target
                                            (fset2:lookup taglist field)
                                            :test #'fset2:equal?)))))
+
+;; TODO: Should it fail, if FIELD doesn't exist?
+(defun equals-tag? (taglist field value &optional test)
+  "Compare VALUE and return T if they are equal or nil if they differ.
+
+If FIELD does not exist, return nil.
+
+The argument TAGLIST should be a `fset2:map'.
+
+The argument FIELD should be a symbol.
+
+The argument VALUE should be a value.
+
+The argument TEST should be an equality function.
+
+Neither FIELD nor VALUE should contain any illegal filename characters.
+"
+  (let ((field-value (fset2:lookup taglist field)))
+    (if test
+        (funcall test field-value value)
+        (fset2:equal? field-value value))))
